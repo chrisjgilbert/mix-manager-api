@@ -28,4 +28,18 @@ RSpec.describe Api::V1::MixesController, type: :request do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe 'POST /articles' do
+    let(:payload) { { mix: { title: 'my mix', url: 'www.blah.com' } } }
+    it 'creates a mix' do
+      expect { post '/api/v1/mixes/', params: payload }.to change { Mix.count }.by(1)
+    end
+
+    before { post '/api/v1/mixes', params: payload }
+      it 'reurns the created mix' do
+        json = JSON.parse(response.body)
+        expect(json['title']).to eq('my mix')
+        expect(json['url']).to eq('www.blah.com')
+      end
+  end
 end

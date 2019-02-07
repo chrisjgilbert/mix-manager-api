@@ -11,4 +11,15 @@ class Api::V1::MixesController < ApplicationController
     render json: mix
   end
 
+  def create
+    mix = Mix.create(mix_params)
+    render json: mix
+  end
+
+  private
+
+  def mix_params
+    params.require(:mix).permit(:title, :url)
+  end
+
 end
