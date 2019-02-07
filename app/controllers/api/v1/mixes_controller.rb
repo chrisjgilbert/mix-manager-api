@@ -1,14 +1,13 @@
 class Api::V1::MixesController < ApplicationController
 
-  # GET /api/v1/mixes
+  before_action :find_mix, only: [:show, :update]
+
   def index
     render json: Mix.all
   end
 
-  # GET /api/v1/mixes/:id
   def show
-    mix = Mix.find(params[:id])
-    render json: mix
+    render json: @mix
   end
 
   def create
@@ -16,10 +15,18 @@ class Api::V1::MixesController < ApplicationController
     render json: mix
   end
 
+  def update
+    @mix.update(mix_params)
+  end
+
   private
 
   def mix_params
     params.require(:mix).permit(:title, :url)
+  end
+
+  def find_mix
+    @mix = Mix.find(params[:id])
   end
 
 end
