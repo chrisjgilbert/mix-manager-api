@@ -38,6 +38,10 @@ RSpec.describe Api::V1::MixesController, type: :request do
       expect(json['title']).to eq('my mix')
       expect(json['url']).to eq('www.blah.com')
     end
+
+    it 'returns a 200' do
+      expect(response).to have_http_status(200)
+    end
   end
 
   describe 'PUT /api/v1/mixes/:id' do
