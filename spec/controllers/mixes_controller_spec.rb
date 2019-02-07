@@ -18,7 +18,7 @@ RSpec.describe Api::V1::MixesController, type: :request do
   describe 'GET /mixes/:id' do
     it 'returns the given the mix' do
       mix_id = mixes.first.id
-      get "/mixes/#{mix_id}"
+      get "/api/v1/mixes/#{mix_id}"
       json = JSON.parse(response.body)
       expect(json['id']).to eq(mix_id)
     end
