@@ -20,7 +20,8 @@ class Api::V1::MixesController < ApplicationController
   end
 
   def destroy
-    mix = Mix.find()
+    mix = Mix.find(params[:id])
+    mix.destroy
   end
 
   private
