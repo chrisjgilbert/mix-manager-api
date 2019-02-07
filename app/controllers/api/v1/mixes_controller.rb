@@ -1,6 +1,6 @@
 class Api::V1::MixesController < ApplicationController
 
-  before_action :find_mix, only: [:show, :update]
+  before_action :find_mix, only: [:show, :update, :delete]
 
   def index
     render json: Mix.all
@@ -17,6 +17,10 @@ class Api::V1::MixesController < ApplicationController
 
   def update
     @mix.update(mix_params)
+  end
+
+  def destroy
+    mix = Mix.find()
   end
 
   private

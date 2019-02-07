@@ -50,4 +50,10 @@ RSpec.describe Api::V1::MixesController, type: :request do
       expect(response).to have_http_status(204)
     end
   end
+
+  describe 'DELETE /api/v1/mixes/mix_id' do
+    it 'deletes the mix from the db' do
+      expect { delete "/api/v1/mixes/#{mix_id}" }.to change { Mix.count }.by(-1)
+    end
+  end
 end
