@@ -8,7 +8,6 @@ RSpec.describe Api::V1::MixesController, type: :request do
   describe 'GET /api/v1/mixes' do
     before { get '/api/v1/mixes' }
     it 'retuns all articles' do
-      json = JSON.parse(response.body)
       expect(json.size).to eq(10)
     end
 
@@ -20,7 +19,6 @@ RSpec.describe Api::V1::MixesController, type: :request do
   describe 'GET /mixes/:id' do
     before { get "/api/v1/mixes/#{mix_id}" }
     it 'returns the given the mix' do
-      json = JSON.parse(response.body)
       expect(json['id']).to eq(mix_id)
     end
 
@@ -37,7 +35,6 @@ RSpec.describe Api::V1::MixesController, type: :request do
 
     before { post '/api/v1/mixes', params: payload }
       it 'reurns the created mix' do
-        json = JSON.parse(response.body)
         expect(json['title']).to eq('my mix')
         expect(json['url']).to eq('www.blah.com')
       end
