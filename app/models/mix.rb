@@ -8,4 +8,8 @@ class Mix < ApplicationRecord
       Tag.where(name: n.strip).first_or_create!
     end
   end
+
+  def tag_list
+    tags.map(&:name).join(', ')
+  end
 end
