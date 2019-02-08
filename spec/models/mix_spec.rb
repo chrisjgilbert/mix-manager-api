@@ -6,11 +6,12 @@ RSpec.describe Mix, type: :model do
   it { should have_many(:taggings).dependent(:destroy) }
   it { should have_many(:tags).through(:taggings) }
 
-  describe '#tagged_with' do
+  describe '.tag_list' do
     let!(:mix) { FactoryBot.create(:mix) }
 
-    it 'returns the tags on a mix' do
-      expect(Mix.tagged_with(mix.tags.size)).to eq(1)
+    it 'saves tags' do
+      subject.tag_list=('techno, house')
+      expect(subject.tags.size).to eq(2)
     end
   end
 end

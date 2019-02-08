@@ -4,7 +4,7 @@ RSpec.describe Api::V1::MixesController, type: :request do
 
   let!(:mixes) { create_list(:mix, 10) }
   let(:mix_id) { mixes.first.id }
-  let(:payload) { { mix: { title: 'my mix', url: 'www.blah.com' } } }
+  let(:payload) { { mix: { title: 'my mix', url: 'www.blah.com', tag_list: ['techno', 'house'] } } }
 
   describe 'GET /api/v1/mixes' do
     before { get '/api/v1/mixes' }

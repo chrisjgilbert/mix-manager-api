@@ -26,7 +26,7 @@ class Api::V1::MixesController < ApplicationController
   private
 
   def mix_params
-    params.require(:mix).permit(:title, :url)
+    params.require(:mix).permit(:title, :url, :tag_list)
   end
 
   def find_mix
